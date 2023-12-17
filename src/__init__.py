@@ -27,7 +27,7 @@ def read_csv(csvfile):
     return df
     
 #To be taken out
-#df = read_csv('results.csv')
+df = read_csv('results.csv')
 #print(df)
 
 #Ticket 2
@@ -64,9 +64,36 @@ def capitalise(df):
 
 #Ticket 5
 #validate_answer_3
+def validate_answer_3(df):
+
+    Answer_3_list = df['answer_3'].tolist() #list.append(Answer_3_list.index(answer))
+    New_df  = pd.DataFrame(index = range(0), columns=df.columns)
+    count = -1
+    #count_invalid = 0
+    #print(Answer_3_list)
+    #Answer_3_list = ['1', '2', '11']
+    #list = []
+    for answer in Answer_3_list:
+        count = count + 1
+        try: 
+            int(answer)
+            if 1 <= int(answer) <= 10:
+                New_df.loc[len(New_df)] = df.loc[count]
+                #[Answer_3_list.index(answer)]
+                #print(New_df)
+                continue
+            else:
+                count_invalid = count_invalid +1
+                continue
+        except:
+            count_invalid = count_invalid +1
+            continue
+    print (New_df)
+    print (count_invalid)
+
 #running function
-#df = validate_answer_3(df)
-#print(df)
+df = validate_answer_3(df)
+print(df)
 
 #Ticket 6
 def cleaned_output(df):
@@ -77,6 +104,32 @@ def cleaned_output(df):
 #df = cleaned_output(df)
 #print(df)
 
+#Ticket 7
+def print_clean_results(csvfile):
+    #creating an empty list to append csv to
+    #import pandas as pd
+    import csv
+    count_row = 0
+    with open(csvfile, newline='') as csvfile:
+        for row in csvfile:
+            row_list= row.strip().split(',')
+            if count_row == 0:
+                 #df = pd.Dataframe({})
+                 column_headers = row_list
+                 length =len(row_list)
+                 df = pd.DataFrame(index = range(0), columns= column_headers)
+                 #print(row_list)
+                 #print(df)
+                 count_row = count_row + 1
+            else:
+                # using loc methods
+                df.loc[len(df)] = row_list
+                #print(df)
+    list_df = [row.tolist() for index, row in df.iterrows()]
+    return print(list_df)
+
+#running function
+print_clean_results('cleaned_results.csv')
 
 
 
