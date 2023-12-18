@@ -1,8 +1,8 @@
 #Testing each funtion
 #Importing Functions
 #from src/__init__ import *
-import pytest
-import pandas
+#import pytest
+#import pandas
 #Testing Ticket 1 - Is it a Pandas Dataframe? 
 def test_read_csv():
     #Setting up test
