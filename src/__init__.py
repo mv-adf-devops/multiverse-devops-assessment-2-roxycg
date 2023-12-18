@@ -28,7 +28,7 @@ def read_csv(csvfile):
     
 #To be taken out
 df = read_csv('results.csv')
-#print(df)
+
 
 #Ticket 2
 def remove_duplicate(df): 
@@ -36,7 +36,7 @@ def remove_duplicate(df):
     return df
 #remove duplicate entries based on user_id field
 #keeps first duplicate by default
-#df = remove_duplicate(df)
+df = remove_duplicate(df)
 #print(df)
 
 
@@ -69,7 +69,7 @@ def validate_answer_3(df):
     Answer_3_list = df['answer_3'].tolist() #list.append(Answer_3_list.index(answer))
     New_df  = pd.DataFrame(index = range(0), columns=df.columns)
     count = -1
-    #count_invalid = 0
+    count_invalid = 0
     #print(Answer_3_list)
     #Answer_3_list = ['1', '2', '11']
     #list = []
@@ -89,11 +89,10 @@ def validate_answer_3(df):
             count_invalid = count_invalid +1
             continue
     print (New_df)
-    print (count_invalid)
 
 #running function
-df = validate_answer_3(df)
-print(df)
+#df = validate_answer_3(df)
+#print(df)
 
 #Ticket 6
 def cleaned_output(df):
@@ -129,7 +128,7 @@ def print_clean_results(csvfile):
     return print(list_df)
 
 #running function
-print_clean_results('cleaned_results.csv')
+#print_clean_results('cleaned_results.csv')
 
 
 
