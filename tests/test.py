@@ -1,6 +1,6 @@
 #Testing each funtion
 #Importing Functions
-from src import *
+#from src/__init__ import *
 import pytest
 import pandas
 #Testing Ticket 1 - Is it a Pandas Dataframe? 
