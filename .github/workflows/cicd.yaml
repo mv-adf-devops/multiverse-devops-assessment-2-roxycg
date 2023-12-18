@@ -25,6 +25,4 @@ jobs:
       run: pip install pytest pytest-cov
     - name: Run Pytest
       run: pytest
-    - name: Update pandas
-      run: python -m Update pandas pandas-cov
       working-directory:
