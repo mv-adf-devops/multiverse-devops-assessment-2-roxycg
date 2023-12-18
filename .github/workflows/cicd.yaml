@@ -25,4 +25,6 @@ jobs:
       run: pip install pytest pytest-cov
     - name: Run Pytest
       run: pytest
+    - name: Install pandas
+      run: pip install pandas pytest-cov
       working-directory:
