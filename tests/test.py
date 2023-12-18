@@ -6,6 +6,7 @@ import pandas
 #Testing Ticket 1 - Is it a Pandas Dataframe? 
 def test_read_csv():
     #Setting up test
+    from __init__ import read_csv
     file = 'results.csv'
     object_type = pandas.core.frame.DataFrame
 
