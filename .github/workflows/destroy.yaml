@@ -1,37 +1,14 @@
-name: Multiverse CI/CD Workflow
+name: Destroy Workflow
 on:
   push:
   pull_request:
     types: [approved, opened, edited, reopened]
   workflow_dispatch:
 
-
 jobs:
-  pytest:
-    name: Test the Survey Application
-    runs-on: ubuntu-latest
   
-  
-    steps:
-    - name: Checkout the repository
-      uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-    - name: Update pip
-      run: python -m pip install --upgrade pip
-    - name: Install pandas
-      run: pip install pandas
-    - name: Install Pytest
-      run: pip install pytest pytest-cov
-    - name: Run Pytest
-      run: pytest
-      working-directory:
-  
-
   terraform:
-    name: Run Terraform
+    name: Destry Terraform
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -51,19 +28,13 @@ jobs:
       uses: hashicorp/setup-terraform@v3
     - name: Initialise Terraform
       run: terraform init
-    - name: Plan changes
-      run: terraform plan
     - name: Apply changes
-      run: terraform apply -auto-approve
-      if: |
-        github.ref_name == 'main' &&
-        github.event_name != 'pull_request'
+      run: terraform destroy -auto-approve
     - name: Commit the Terraform state file
       uses: EndBug/add-and-commit@v9
-      if: |
-        github.ref_name == 'main' &&
-        github.event_name != 'pull_request'
       with:
         add: '*.tfstate*'
         cwd: './terraform-iac'
         message: 'Adding the up-to-date Terraform state file'
+
+      
