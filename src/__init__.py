@@ -132,4 +132,5 @@ def print_clean_results(csvfile):
 
 
 
-
+import sys 
+print(sys.path)
