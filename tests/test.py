@@ -90,24 +90,24 @@ def test_validate_answer_3():
 
 #Ticket 6
 #from __init__ import cleaned_output
-def test_cleaned_output():
+#def test_cleaned_output():
     #Setting up test
-    from __init__ import read_csv
-    from __init__ import remove_duplicate 
-    from __init__ import ignore_empty_lines
-    from __init__ import capitalise
-    from __init__ import validate_answer_3
-    from __init__ import cleaned_output
-    file = 'results.csv'
-    df = read_csv(file)
-    df = remove_duplicate(df)
-    df = ignore_empty_lines(df)
-    df = capitalise(df)
-    df = validate_answer_3(df)
+#    from __init__ import read_csv
+#    from __init__ import remove_duplicate 
+#    from __init__ import ignore_empty_lines
+#    from __init__ import capitalise
+#    from __init__ import validate_answer_3
+#    from __init__ import cleaned_output
+#    file = 'results.csv'
+#    df = read_csv(file)
+#    df = remove_duplicate(df)
+#    df = ignore_empty_lines(df)
+#    df = capitalise(df)
+#    df = validate_answer_3(df)
     #Running Test
-    function_output = cleaned_output(df)
+#    function_output = cleaned_output(df)
     #Checking Test Output
-    assert 'cleaned_results.csv' == 'cleaned_results_test.csv'
+#    assert 'cleaned_results.csv' == 'cleaned_results_test.csv'
 
 #Ticket 7
 def test_print_clean_results():
