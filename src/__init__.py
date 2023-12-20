@@ -27,7 +27,7 @@ def read_csv(csvfile):
     return df
     
 #To be taken out
-df = read_csv('results.csv')
+#df = read_csv('results.csv')
 
 
 #Ticket 2
@@ -36,7 +36,7 @@ def remove_duplicate(df):
     return df
 #remove duplicate entries based on user_id field
 #keeps first duplicate by default
-df = remove_duplicate(df)
+#df = remove_duplicate(df)
 #print(df)
 
 
@@ -65,30 +65,11 @@ def capitalise(df):
 #Ticket 5
 #validate_answer_3
 def validate_answer_3(df):
-
-    Answer_3_list = df['answer_3'].tolist() #list.append(Answer_3_list.index(answer))
-    New_df  = pd.DataFrame(index = range(0), columns=df.columns)
-    count = -1
-    count_invalid = 0
-    #print(Answer_3_list)
-    #Answer_3_list = ['1', '2', '11']
-    #list = []
-    for answer in Answer_3_list:
-        count = count + 1
-        try: 
-            int(answer)
-            if 1 <= int(answer) <= 10:
-                New_df.loc[len(New_df)] = df.loc[count]
-                #[Answer_3_list.index(answer)]
-                #print(New_df)
-                continue
-            else:
-                count_invalid = count_invalid +1
-                continue
-        except:
-            count_invalid = count_invalid +1
-            continue
-    print (New_df)
+    df['answer_3'] = df['answer_3'].astype(int)
+    df = df.drop(df[df['answer_3'] > 10].index)
+    df = df.drop(df[df['answer_3'] < 1].index)
+    
+    return df
 
 #running function
 #df = validate_answer_3(df)
@@ -96,7 +77,7 @@ def validate_answer_3(df):
 
 #Ticket 6
 def cleaned_output(df):
-    df.to_csv('cleaned_results.csv')
+    df.to_csv('cleaned_results.csv', index = False)
     return 
 
 #running function
@@ -104,7 +85,7 @@ def cleaned_output(df):
 #print(df)
 
 #Ticket 7
-def print_clean_results(csvfile):
+def list_clean_results(csvfile):
     #creating an empty list to append csv to
     #import pandas as pd
     import csv
@@ -125,12 +106,11 @@ def print_clean_results(csvfile):
                 df.loc[len(df)] = row_list
                 #print(df)
     list_df = [row.tolist() for index, row in df.iterrows()]
-    return print(list_df)
+    return list_df
 
 #running function
 #print_clean_results('cleaned_results.csv')
+def print_clean_results(list_df):
+    return print(list_df)
 
 
-
-import sys 
-print(sys.path)
